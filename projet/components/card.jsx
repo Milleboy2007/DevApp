@@ -3,13 +3,24 @@ import React from 'react'
 
 const card = (props) => {
   return (
-    <View style={{alignItems: "center", paddingLeft: 20, justifyContent: "center"}}>
-        <Image source={props.img} style={{height: 400, width: 300, resizeMode: 'contain'/*, margin:10*/}}/>
-        <Text style={{/*textAlign: "center", */fontSize:50}}>{props.name}</Text>
+    <View style={styles.container}>
+        <Image source={props.img} style={styles.img}/>
+        <Text style={{fontSize:50}}>{props.name}</Text>
     </View>
   )
 }
 
 export default card
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    paddingLeft: 20,
+    justifyContent: "center"
+  },
+  img:{
+    height: 400,
+    width: 300,
+    resizeMode: 'contain'
+  }
+})
