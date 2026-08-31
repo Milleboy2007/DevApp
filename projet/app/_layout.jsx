@@ -9,7 +9,7 @@ const RootLayout = () => {
         <SafeAreaView style={{flex:1}}>
             <Text>Hello from layout</Text>
             <Stack>
-                <Stack.Screen name='index' options={{headerShown: false}}/>
+                <Stack.Screen name='touchable' options={{headerShown: false}}/>
             </Stack>
         </SafeAreaView>
     </>
