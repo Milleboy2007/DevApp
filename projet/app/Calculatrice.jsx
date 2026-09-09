@@ -1,16 +1,24 @@
-import { StyleSheet, Text, View, Dimensions } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, useWindowDimensions } from 'react-native'
 import React, {useState} from 'react'
 import BoutonCalculatrice from '../components/boutonCalculatrice'
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Calculatrice = () => {
-
+    const {width, height} = useWindowDimensions();
     const [resultat, setResultat] = useState("0");
-    const touch = [
+
+    const isHorizontal = width > height;
+
+    const touches = !isHorizontal ? [
         ["1", "2", "3", "+"],
         ["4", "5", "6", "-"],
         ["7", "8", "9", "x"],
         ["0", ".", "<-", "="]
+    ]:
+    [
+        ["1", "2", "3", "4", "+", "("],
+        ["5", "6", "7", "8", "-", ")"],
+        [ "9", "0", ".", "x", "<-", "="]
     ]
 
     const handlePress = (value) => {
@@ -43,11 +51,11 @@ const Calculatrice = () => {
             <Text style={styles.label}>{resultat}</Text>
         </View>
 
-        {touch.map((value, indexRow) => (
+        {touches.map((value, indexRow) => (
             <View key={indexRow} style={styles.row}>
                 {value.map((value, indexCol) => (
                     <View key={indexCol} style={styles.column}>
-                        <BoutonCalculatrice value={value} handlePress={handlePress}/>
+                        <BoutonCalculatrice width={width} value={value} handlePress={handlePress}/>
                     </View>
                 ))}
             </View>
@@ -79,6 +87,7 @@ const styles = StyleSheet.create({
   column: {
     flex: 1,
     marginHorizontal: 0,
+    height: 50
   },
   label:{
     textAlign:"right",
