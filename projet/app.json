@@ -35,7 +35,9 @@
         {
           "initialOrientation": "DEFAULT"
         }
-      ]
+      ],
+      "expo-sqlite",
+      "expo-status-bar"
     ]
   }
 }

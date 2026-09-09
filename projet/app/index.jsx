@@ -4,10 +4,10 @@ import Card from '../components/card'
 
 const Index = () => {
   const dogoList = [
-    ["Corgie", require("../assets/images/corgie.png")],
-    ["Golden", require("../assets/images/golden.png")],
-    ["Jack", require("../assets/images/chiot3.png")],
-    ["Golden", require("../assets/images/golden2.png")]
+    // ["Corgie", require("../assets/images/corgie.png")],
+    // ["Golden", require("../assets/images/golden.png")],
+    // ["Jack", require("../assets/images/chiot3.png")],
+    // ["Golden", require("../assets/images/golden2.png")]
   ]
 
   return (
