@@ -1,15 +1,13 @@
-// Composant boutonCalculatrice
-// 
 import { StyleSheet, Text, View,TouchableOpacity, Dimensions} from 'react-native'
 import React, { useEffect, useState } from 'react'
 
-const BoutonCalculatrice = ({value, handlePress, width}) => {
-  let isSpecial = true
-  if (value in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."]) isSpecial = false;
+const BoutonCalculatrice = ({value, handlePress}) => {
+  let isSpecial = false
+  if (!["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."].includes(value)) isSpecial = true;
 
   return (
     
-    <TouchableOpacity onPress={() => handlePress(value)} style={[styles.container, isSpecial ? styles.functionButton: styles.numberButton, {height:((width - 50) / 4)}]}>
+    <TouchableOpacity onPress={() => handlePress(value)} style={[styles.container, isSpecial ? styles.functionButton: styles.numberButton]}>
       <Text style={styles.text}>
         {value}
       </Text>

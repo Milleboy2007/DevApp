@@ -7,7 +7,7 @@ import "../global.css"
 const RootLayout = () => {
   return (
     <>
-        <SafeAreaView style={{flex:1}}>
+        <SafeAreaView style={{flex:1, backgroundColor: "grey"}}>
             <Text>Hello from layout</Text>
             <Stack>
                 {/* <Stack.Screen name='index' options={{headerShown: false}}/> */}

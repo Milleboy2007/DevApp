@@ -35,6 +35,13 @@ const Calculatrice = () => {
                     setResultat("Erreur");
                 }
                 break;
+            case ".":
+                if(resultat == "0"){
+                    setResultat("0.")
+                }else{
+                    setResultat(resultat + value)
+                }
+                break;
             default:
                 resultat === "0" || resultat === "Erreur"?
                     setResultat(value):
@@ -51,15 +58,17 @@ const Calculatrice = () => {
             <Text style={styles.label}>{resultat}</Text>
         </View>
 
-        {touches.map((value, indexRow) => (
-            <View key={indexRow} style={styles.row}>
-                {value.map((value, indexCol) => (
-                    <View key={indexCol} style={styles.column}>
-                        <BoutonCalculatrice width={width} value={value} handlePress={handlePress}/>
-                    </View>
-                ))}
-            </View>
-        ))}
+        <View style={{flex: isHorizontal ? 2 : 1}}>
+            {touches.map((row, indexRow) => (
+                <View key={indexRow} style={styles.row}>
+                    {row.map((value, indexCol) => (
+                        <View key={indexCol} style={styles.column}>
+                            <BoutonCalculatrice value={value} handlePress={handlePress}/>
+                        </View>
+                    ))}
+                </View>
+            ))}
+        </View>
 
         </SafeAreaView>
 
@@ -75,19 +84,17 @@ const styles = StyleSheet.create({
     flex:1,
     backgroundColor:"grey",
     padding: 10,
-    alignItems:"flex-end",
-    justifyContent:"flex-end"
 
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 0,
+    flex: 1
   },
   column: {
     flex: 1,
     marginHorizontal: 0,
-    height: 50
   },
   label:{
     textAlign:"right",
@@ -96,8 +103,7 @@ const styles = StyleSheet.create({
     width:"90%"
   },
   containerLabel:{
-    height:60,
-    width:'100%',
+    flex: 1,
     flexDirection: 'row',
     marginBottom: 10,
     justifyContent:'flex-end',
