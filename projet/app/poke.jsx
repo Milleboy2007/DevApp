@@ -2,6 +2,7 @@ import { StyleSheet, Text, View,TouchableOpacity, Dimensions, H1, ScrollView} fr
 import BoutonPoke from "../components/boutonPoke";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getSingularId } from 'expo-router/build/useScreens';
+import { useState } from 'react';
 
 export default function Poke(){
     // Définition des types en français et correspondance des indices
@@ -33,6 +34,68 @@ export default function Poke(){
     /* Tén */ [1, 0.5, 1, 1, 1, 1, 1, 2, 0.5, 1, 1, 1, 1, 2, 1, 1, 0.5]
     ];
 
+    const [selectedType, setSelectedType] = useState({"att": [], "def": []})
+    const [isAttFull, setIsAttFull] = useState(false);
+    const [isDefFull, setIsDefFull] = useState(false);
+
+    function handleTypeChange(method, class_, type){
+        if(method == "add"){
+            switch (class_){
+                case "att":
+                    if(selectedType["att"].length < 2){
+                        let tempAtt = selectedType;
+                        tempAtt["att"].push(type);
+                        setSelectedType(tempAtt);
+                        console.log(selectedType, " | ", selectedType["att"].length);
+                    }else {
+                        console.log("Deja 2 type de selectionner");
+                    }
+
+                    break;
+                case "def":
+                    if(selectedType["def"] < 2){
+                        let tempDef = selectedType;
+                        tempDef["def"].push(type);
+                        setSelectedType(tempDef);
+                        console.log(selectedType);
+                    }else {
+                        console.log("Deja 2 type de selectionner");
+                    }
+
+                    break;
+                default:
+                    console.log("Probleme avec add: ", class_);
+                    break;
+            }
+        }else if(method == "supp"){
+            switch (class_){
+                case "att":
+                    let tempAtt = selectedType;
+                    tempAtt["att"] = tempAtt["att"].filter(elem => elem != type);
+                    setSelectedType(tempAtt);
+                    break;
+                case "def":
+                    let tempDef = selectedType;
+                    tempDef["def"] = tempDef["def"].filter(elem => elem != type);
+                    setSelectedType(tempDef)
+                    break;
+                default:
+                    console.log("Probleme avec supp: ", class_);
+                    break;
+            }
+        }
+
+        console.log(selectedType["att"].length)
+        if(selectedType["att"].length = 2) {
+            setIsAttFull(true);
+        }else setIsAttFull(false);
+
+        if(selectedType["def"].length = 2) {
+            setIsDefFull(true);
+        }else setIsDefFull(false);
+        
+    }
+
     return(
         <ScrollView>
             <SafeAreaView style={styles.container}>
@@ -43,7 +106,7 @@ export default function Poke(){
                 {
                     TYPES.map((type) => (
                         <View style={styles.btn}>
-                            <BoutonPoke type={type}/>
+                            <BoutonPoke class_="att" type={type} handleTypeChange={handleTypeChange} isFull={isAttFull}/>
                         </View>
                     ))
                 }
@@ -53,7 +116,7 @@ export default function Poke(){
                 {
                     TYPES.map((type) => (
                         <View style={styles.btn}>
-                            <BoutonPoke type={type}/>
+                            <BoutonPoke class_="def" type={type} handleTypeChange={handleTypeChange} isFull={isDefFull}/>
                         </View>
                     ))
                 }

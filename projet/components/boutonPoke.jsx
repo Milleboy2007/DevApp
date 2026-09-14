@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View,TouchableOpacity, Dimensions} from 'react-native'
 
-export default function BoutonPoke({type}){
+export default function BoutonPoke({class_, type, handleTypeChange, isFull}){
     const [isClick, setIsClick] = useState(false)
 
     // Couleurs officielles des types Pokémon
@@ -25,8 +25,25 @@ export default function BoutonPoke({type}){
         Ténèbres: "#705848"
     };
 
+    function handlePress(){
+        console.log(isFull)
+        if (isClick)
+        {
+            handleTypeChange("supp",class_, type);
+            setIsClick(!isClick);
+
+        }else{
+            if(!isFull){
+                handleTypeChange("add",class_, type);
+                setIsClick(!isClick);
+            }
+        }
+
+        
+    }
+
     return(
-        <TouchableOpacity onPress={() => setIsClick(!isClick)} style={isClick? [styles.btn, {backgroundColor: TYPE_COLORS[type]}]: styles.btn}>
+        <TouchableOpacity onPress={() => handlePress()} style={isClick? [styles.btn, {backgroundColor: TYPE_COLORS[type]}]: styles.btn}>
             <Text style={isClick? {color: "black"}: {color: "white"}}>
                 {type}
             </Text>
