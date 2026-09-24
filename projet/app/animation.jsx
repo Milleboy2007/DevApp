@@ -56,11 +56,9 @@ export default function animation() {
   }));
 
   return (
-    <GestureHandlerRootView style={styles.container}>
       <GestureDetector gesture={longPress}>
         <Animated.View style={[styles.box, animatedStyle]} />
       </GestureDetector>
-    </GestureHandlerRootView>
   );
 }
 
