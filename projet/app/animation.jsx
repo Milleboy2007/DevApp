@@ -8,23 +8,26 @@ export default function Animation() {
   const progress = useSharedValue(0);
   const currentIndex = useSharedValue(0);
   const nextIndex = useSharedValue(0);
+  const isNew = useSharedValue(false);
 
-  const press = Gesture.Tap().onEnd(() => {
-    currentIndex.value = nextIndex.value;
-    nextIndex.value = (currentIndex.value + 1) % COLORS.length;
-    
-    progress.value = 0;
-    progress.value = withTiming(1, {
-      duration: 500,
-    });
+  const press = Gesture.Tap().onEnd((e, success) => {
+    if(success) isNew.value = !isNew.value;
+    // currentIndex.value = nextIndex.value;
+    // nextIndex.value = (currentIndex.value + 1) % COLORS.length;
+
+    // progress.value = 0;
+    // progress.value = withTiming(1, {
+    //   duration: 500,
+    // });
   });
 
   const animatedStyle = useAnimatedStyle(() => ({
-    backgroundColor: interpolateColor(
-      progress.value,
-      [0, 1],
-      [COLORS[currentIndex.value], COLORS[nextIndex.value]],
-    ),
+    backgroundColor: withTiming(isNew.value? "#002aff": "#fefeff", {duration: 500})
+    // interpolateColor(
+    //   progress.value,
+    //   [0, 1],
+    //   [COLORS[currentIndex.value], COLORS[nextIndex.value]],
+    // ),
   }));
 
   return (
