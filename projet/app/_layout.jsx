@@ -15,8 +15,9 @@ const RootLayout = () => {
                 {/* <Stack.Screen name='Calculatrice' options={{headerShown: false}}/> */}
                 {/* <Stack.Screen name='app' options={{headerShown: false}}/> */}
                 {/* <Stack.Screen name='poke' options={{headerShown: false}}/> */}
-                <Stack.Screen name='animation' options={{headerShown: false}}/>
+                {/* <Stack.Screen name='animation' options={{headerShown: false}}/> */}
                 {/* <Stack.Screen name='old_anim' options={{headerShown: false}}/> */}
+                <Stack.Screen name='toDoList' options={{headerShown: false}}/>
             </Stack>
         </GestureHandlerRootView>
     )
