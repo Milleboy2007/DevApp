@@ -1,14 +1,13 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
 
-const Index = () => {
+const Setting = () => {
 
   return (
-    <>
-      <Text>Index</Text>
-    </>
+        <>
+        </>
   )
 }
 
-export default Index
+export default Setting
 
 const styles = StyleSheet.create({})

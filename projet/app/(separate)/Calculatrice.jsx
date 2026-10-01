@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Dimensions, useWindowDimensions } from 'react-native'
 import React, {useState} from 'react'
-import BoutonCalculatrice from '../components/boutonCalculatrice'
+import BoutonCalculatrice from '../../components/boutonCalculatrice'
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Calculatrice = () => {
