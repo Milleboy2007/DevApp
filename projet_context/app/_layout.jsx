@@ -67,6 +67,14 @@ const Layout = () => {
             title: tabName
           }}
         />
+
+        <Drawer.Screen
+          name="takePicture"
+          options={{
+            drawerLabel: 'takePicture',
+            title: tabName
+          }}
+        />
       </Drawer>
     </SafeAreaView>
   );
