@@ -75,6 +75,14 @@ const Layout = () => {
             title: tabName
           }}
         />
+
+        <Drawer.Screen
+          name="Game"
+          options={{
+            drawerLabel: 'Game',
+            title: tabName
+          }}
+        />
       </Drawer>
     </SafeAreaView>
   );
