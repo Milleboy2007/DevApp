@@ -14,12 +14,28 @@ const RightAction = (data, setTasks) => {
     setTasks((prev) => prev.filter(t => t != data));
 }
 
-const Card = ({data}) => {
+const renderLeftActions = () => {
   return (
-    <Animated.View>
+    <View style={styles.deleteBackground}>
+      <Text style={styles.deleteText}>Supprimer</Text>
+    </View>
+  );
+};
+
+const Card = ({data, setTasks}) => {
+  return (
+    <Animated.View
+      layout={LinearTransition}
+      entering={FadeIn}
+      exiting={FadeOut}
+    >
         <ReanimatedSwipeable
             containerStyle={{flex:1}}
-            onSwipeableWillOpen={() => RightAction(data, setTasks)}
+            renderLeftActions={renderLeftActions}
+            onSwipeableWillOpen={(d) => {
+                if(d === 'right') RightAction(data, setTasks)
+              }
+            }
         >
             <Animated.View style={styles.cardContainer}>
                 <Text style={{color:COLOR_4}}>
@@ -59,7 +75,7 @@ const ToDoList = () => {
       <FlatList
         data={tasks}
         renderItem={({item}) => <Card data={item} setTasks={setTasks}/>}
-        keyExtractor={(item) => item}
+        keyExtractor={(item, index) => item + index}
         />
     </SafeAreaView>
   )
@@ -99,5 +115,17 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR_2,
     marginVertical: 8,
     padding: 20,
+  },
+
+  deleteBackground: {
+    backgroundColor: 'red',
+    marginVertical: 8,
+    justifyContent: 'center',
+    paddingLeft: 20,
+    flex: 1
+  },
+  deleteText: {
+    color: 'white',
+    fontWeight: 'bold',
   }
 })
