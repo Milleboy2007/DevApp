@@ -70,7 +70,14 @@ export default function RootLayout() {
             drawerLabel: 'Touchable',
           }}
         />
+        <Drawer.Screen
+          name="offline_first"
+          options={{
+            drawerLabel: 'offline_first',
+          }}
+        />
       </Drawer>
+      
 
     </GestureHandlerRootView>
   );
