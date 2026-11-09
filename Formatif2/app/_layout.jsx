@@ -40,42 +40,6 @@ export default function RootLayout() {
             drawerLabel: 'App',
           }}
         />
-        <Drawer.Screen
-          name="(separate)"
-          options={{
-            drawerLabel: 'Calculatrice',
-          }}
-        />
-        <Drawer.Screen
-          name="index"
-          options={{
-            drawerLabel: 'Index',
-          }}
-        />
-        <Drawer.Screen
-          name="old_anim"
-          options={{
-            drawerLabel: 'Old_anim',
-          }}
-        />
-        <Drawer.Screen
-          name="toDoList"
-          options={{
-            drawerLabel: 'ToDoList',
-          }}
-        />
-        <Drawer.Screen
-          name="touchable"
-          options={{
-            drawerLabel: 'Touchable',
-          }}
-        />
-        <Drawer.Screen
-          name="offline_first"
-          options={{
-            drawerLabel: 'offline_first',
-          }}
-        />
       </Drawer>
       
 
