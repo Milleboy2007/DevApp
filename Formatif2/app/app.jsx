@@ -55,10 +55,6 @@ export default function App() {
     }, []);
 
     useEffect(() => {
-        loadScores()
-    }, [isOnline])
-
-    useEffect(() => {
         const syncInterval = setInterval(() => {
             if(isOnline){
                 loadScores()
@@ -76,7 +72,7 @@ export default function App() {
         // On calcule la distance à parcourir pour un clic
         const stepDistance = TRACK_DISTANCE / TARGET_CLICKS;
         // On anime la position vers la nouvelle cible
-        carPosition.value = withTiming(newClicksCount * stepDistance, { duration: 10, easing: Easing.linear });
+        carPosition.value = withTiming(newClicksCount * stepDistance, { duration: 100, easing: Easing.linear });
 
         // 2. LE CHRONOMÈTRE
         if (newClicksCount === 1) {
